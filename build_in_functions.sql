@@ -1,6 +1,6 @@
 ﻿/*
 =========================================================
- SQL Assignment: Advanced Use of Built-in Functions
+Advanced Use of Built-in Functions
  Database: AdventureWorks2017
 =========================================================
 

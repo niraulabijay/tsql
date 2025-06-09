@@ -1,5 +1,5 @@
 -- ==========================================
--- Project Assignment: Sales Margin Report (AdventureWorksDW2017)
+-- Sales Margin Report (AdventureWorksDW2017)
 -- Time Allocation: 2 Hours
 -- ==========================================
 
