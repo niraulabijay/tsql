@@ -1,0 +1,621 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "dataSources": [
+      {
+        "name": "AdventureWorks 2017 DW",
+        "connectionString": "Data Source=BIZZAY;Initial Catalog=AdventureWorksDW2017;Integrated Security=True",
+        "impersonationMode": "impersonateServiceAccount",
+        "provider": "System.Data.SqlClient"
+      }
+    ],
+    "tables": [
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "DIM_CustomerId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_CustomerId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "sourceColumn": "FirstName",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "sourceColumn": "LastName",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "BirthDate",
+            "dataType": "dateTime",
+            "sourceColumn": "BirthDate",
+            "sourceProviderType": "date",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_customer",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[dim_customer]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"dim_customer\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_CustomerId\",\"FirstName\",\"LastName\",\"BirthDate\",\"Gender\",\"Country\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Order Date",
+        "columns": [
+          {
+            "name": "DIM_DateId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_DateId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear",
+            "sourceProviderType": "smallint",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "CalendarMonthName",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "Semester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "smallint",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "int64",
+            "sourceColumn": "FiscalQuarter",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "FiscalSemester",
+            "dataType": "int64",
+            "sourceColumn": "FiscalSemester",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Order Date"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDate",
+            "displayFolder": "Standard Order Date"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[dim_date]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"dim_date\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_DateId\",\"CalendarYear\",\"CalendarMonthName\",\"CalendarQuarter\",\"CalendarSemester\",\"FiscalYear\",\"FiscalQuarter\",\"FiscalSemester\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "New Hierarchy"
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {
+            "name": "DIM_ProductId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_ProductId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "SubCategory",
+            "dataType": "string",
+            "sourceColumn": "SubCategory",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_product",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[dim_product]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"dim_product\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_ProductId\",\"Name\",\"Category\",\"SubCategory\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SalesTerritory",
+        "columns": [
+          {
+            "name": "DIM_SalesTerritoryId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_SalesTerritoryId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "SalesGroup",
+            "dataType": "string",
+            "sourceColumn": "SalesGroup",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_sales_territory",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[dim_sales_territory]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"dim_sales_territory\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_SalesTerritoryId\",\"SalesGroup\",\"Country\",\"Region\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Internet Sales",
+        "columns": [
+          {
+            "name": "DIM_ProductId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_ProductId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "DIM_OrderDateId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_OrderDateId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "DIM_ShipDateId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_ShipDateId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "DIM_DueDateId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_DueDateId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "DIM_CustomerId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_CustomerId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "DIM_SalesTerritoryId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_SalesTerritoryId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "UnitPrice",
+            "sourceProviderType": "money"
+          },
+          {
+            "name": "OrderQuantity",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrderQuantity",
+            "sourceProviderType": "smallint"
+          },
+          {
+            "name": "SalesAmount",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "SalesAmount",
+            "sourceProviderType": "money"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_internet_sales",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[fact_internet_sales]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"fact_internet_sales\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_ProductId\",\"DIM_OrderDateId\",\"DIM_ShipDateId\",\"DIM_DueDateId\",\"DIM_CustomerId\",\"DIM_SalesTerritoryId\",\"UnitPrice\",\"OrderQuantity\",\"SalesAmount\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Sales Amount",
+            "expression": "SUM ('Internet Sales'[SalesAmount])",
+            "displayFolder": "Standard Sales Measures"
+          },
+          {
+            "name": "New Measure",
+            "expression": "SUM('Internet Sales'[UnitPrice])",
+            "displayFolder": "Standard Sales Measures"
+          }
+        ]
+      },
+      {
+        "name": "Ship Date",
+        "columns": [
+          {
+            "name": "DIM_DateId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_DateId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear",
+            "sourceProviderType": "smallint",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "CalendarMonthName",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "Semester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "smallint",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "int64",
+            "sourceColumn": "FiscalQuarter",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "FiscalSemester",
+            "dataType": "int64",
+            "sourceColumn": "FiscalSemester",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Ship Date"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDate",
+            "displayFolder": "Standard Ship Date"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[dim_date]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"dim_date\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_DateId\",\"CalendarYear\",\"CalendarMonthName\",\"CalendarQuarter\",\"CalendarSemester\",\"FiscalYear\",\"FiscalQuarter\",\"FiscalSemester\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "New Hierarchy"
+          }
+        ]
+      },
+      {
+        "name": "Due Date",
+        "columns": [
+          {
+            "name": "DIM_DateId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DIM_DateId",
+            "sourceProviderType": "int"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear",
+            "sourceProviderType": "smallint",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "CalendarMonthName",
+            "sourceProviderType": "nvarchar",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "Semester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "smallint",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "int64",
+            "sourceColumn": "FiscalQuarter",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "FiscalSemester",
+            "dataType": "int64",
+            "sourceColumn": "FiscalSemester",
+            "sourceProviderType": "tinyint",
+            "displayFolder": "Standard Due Dates"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "\t*",
+                "FROM",
+                "\t[analytics].[dim_date]"
+              ],
+              "dataSource": "AdventureWorks 2017 DW"
+            },
+            "annotations": [
+              {
+                "name": "TabularEditor_TableSchema",
+                "value": "{\"Name\":\"dim_date\",\"Schema\":\"analytics\",\"Database\":\"AdventureWorksDW2017\",\"IncludedColumns\":[\"DIM_DateId\",\"CalendarYear\",\"CalendarMonthName\",\"CalendarQuarter\",\"CalendarSemester\",\"FiscalYear\",\"FiscalQuarter\",\"FiscalSemester\"],\"SelectAll\":true}"
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "New Hierarchy"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "93f8bd22-bd94-4c32-b365-903ece1a7cb5",
+        "fromTable": "Internet Sales",
+        "fromColumn": "DIM_CustomerId",
+        "toTable": "Customer",
+        "toColumn": "DIM_CustomerId"
+      },
+      {
+        "name": "0324c493-91a4-4082-82b3-45c6f8641639",
+        "fromTable": "Internet Sales",
+        "fromColumn": "DIM_DueDateId",
+        "toTable": "Due Date",
+        "toColumn": "DIM_DateId"
+      },
+      {
+        "name": "c8d7c346-bb8b-4b6e-82d1-a9f8313fad1f",
+        "fromTable": "Internet Sales",
+        "fromColumn": "DIM_OrderDateId",
+        "toTable": "Order Date",
+        "toColumn": "DIM_DateId"
+      },
+      {
+        "name": "bc149cf5-819c-4366-9526-b0e16d345ef5",
+        "fromTable": "Internet Sales",
+        "fromColumn": "DIM_ProductId",
+        "toTable": "Product",
+        "toColumn": "DIM_ProductId"
+      },
+      {
+        "name": "39d6a9e1-86c3-4fc6-aa3f-1db10c7f8b9d",
+        "fromTable": "Internet Sales",
+        "fromColumn": "DIM_SalesTerritoryId",
+        "toTable": "SalesTerritory",
+        "toColumn": "DIM_SalesTerritoryId"
+      },
+      {
+        "name": "fc5ee4f3-f7a9-43fe-818b-ebd14eb982e2",
+        "fromTable": "Internet Sales",
+        "fromColumn": "DIM_ShipDateId",
+        "toTable": "Ship Date",
+        "toColumn": "DIM_DateId"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Shared Expressions\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Tables/Calculation Items\",\"Translations\"]}"
+      }
+    ]
+  }
+}
